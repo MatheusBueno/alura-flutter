@@ -1,6 +1,6 @@
-# flutter_app
+# NosBank
 
-A new Flutter project.
+Learning Flutter!
 
 ## Getting Started
 

@@ -32,8 +32,14 @@ class TransferForm extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(children: [
             Text('Olá, qual a agencia e conta?'),
-            TextInput(_agency, 'Número da agencia'),
-            TextInput(_account, 'Número da conta'),
+            TextInput(
+              controller: _agency,
+              label: 'Número da agencia',
+            ),
+            TextInput(
+              controller: _account,
+              label: 'Número da conta',
+            ),
             RaisedButton(
               color: Colors.purple,
               textColor: Colors.white,
@@ -51,18 +57,21 @@ class TransferForm extends StatelessWidget {
 }
 
 class TextInput extends StatelessWidget {
-  final TextEditingController _controller;
-  final String _label;
+  final TextEditingController controller;
+  final String label;
 
-  TextInput(this._controller, this._label);
+  TextInput({this.controller, this.label});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: TextField(
-        controller: _controller,
-        decoration: InputDecoration(labelText: _label, hintText: '010110'),
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label != null ? label : 'Placeholder',
+          hintText: '010110',
+        ),
         keyboardType: TextInputType.number,
       ),
     );
