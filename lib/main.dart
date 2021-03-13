@@ -27,8 +27,9 @@ class TransferForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('NosBank')),
-        body: Padding(
+      appBar: AppBar(title: Text('NosBank')),
+      body: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(children: [
             Text('Olá, qual a agencia e conta?'),
@@ -47,7 +48,14 @@ class TransferForm extends StatelessWidget {
               onPressed: _onCreateTransfer,
             )
           ]),
-        ));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.queue_music),
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MySecondScreen())),
+      ),
+    );
   }
 
   void _onCreateTransfer() {
@@ -74,6 +82,18 @@ class TextInput extends StatelessWidget {
         ),
         keyboardType: TextInputType.number,
       ),
+    );
+  }
+}
+
+class MySecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Page 2'),
+      ),
+      body: Text('Minha segunda pagina'),
     );
   }
 }
